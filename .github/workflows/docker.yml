@@ -1,0 +1,23 @@
+name: Docker Images CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build images (ubuntu-latest)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image: [alpine-user-ruby, archlinux-user-ruby, ubuntu-user-ruby]
+      fail-fast: false
+    steps:
+      - name: Git Clone
+        uses: actions/checkout@v4
+
+      - name: Build ${{ matrix.image }} image
+        run: |
+          cd ${{ matrix.image }}
+          docker build -t ${{ matrix.image }} .
