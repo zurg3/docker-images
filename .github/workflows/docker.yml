@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image: [alpine-user-ruby, archlinux-user-ruby, ubuntu-user-ruby]
+        image:
+          - alpine-user-ruby
+          - archlinux-user-ruby
+          - debian-user-ruby
+          - ubuntu-user-ruby
       fail-fast: false
     steps:
       - name: Git Clone
