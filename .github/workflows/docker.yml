@@ -30,8 +30,7 @@ jobs:
         run: |
           docker run --rm ${{ matrix.image }} echo "Hello, World!"
           docker run --rm ${{ matrix.image }} uname -a
-          docker run --rm ${{ matrix.image }} lscpu
           docker run --rm ${{ matrix.image }} date +%s
           docker run --rm ${{ matrix.image }} ls -l /
-          docker run --rm ${{ matrix.image }} who
+          docker run --rm ${{ matrix.image }} whoami
           docker run --rm ${{ matrix.image }} pwd
