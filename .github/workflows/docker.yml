@@ -25,3 +25,13 @@ jobs:
         run: |
           cd ${{ matrix.image }}
           docker build -t ${{ matrix.image }} .
+
+      - name: Test ${{ matrix.image }} image
+        run: |
+          docker run --rm ${{ matrix.image }} echo "Hello, World!"
+          docker run --rm ${{ matrix.image }} uname -a
+          docker run --rm ${{ matrix.image }} lscpu
+          docker run --rm ${{ matrix.image }} date +%s
+          docker run --rm ${{ matrix.image }} ls -l /
+          docker run --rm ${{ matrix.image }} who
+          docker run --rm ${{ matrix.image }} pwd
