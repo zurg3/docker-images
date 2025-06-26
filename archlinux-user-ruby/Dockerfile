@@ -1,6 +1,6 @@
 # docker build --build-arg USERNAME=user -t archlinux-user-ruby .
 
-FROM archlinux:latest
+FROM archlinux:base-devel
 
 ARG USERNAME="user"
 
@@ -9,7 +9,7 @@ ARG USERNAME="user"
 RUN echo "[multilib]" >> /etc/pacman.conf
 RUN echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
-RUN pacman -Syy && pacman -S --noconfirm base-devel ruby ruby-stdlib
+RUN pacman -Syy && pacman -S --noconfirm ruby ruby-stdlib
 
 RUN useradd -m -g users -G wheel -s /bin/bash ${USERNAME}
 RUN echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
