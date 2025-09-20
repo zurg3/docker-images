@@ -9,7 +9,7 @@ ARG USERNAME="user"
 RUN echo "[multilib]" >> /etc/pacman.conf
 RUN echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
-RUN pacman -Syy && pacman -S --noconfirm ruby ruby-stdlib
+RUN pacman -Syyu --noconfirm ruby ruby-stdlib
 
 RUN useradd -m -g users -G wheel -s /bin/bash ${USERNAME}
 RUN echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
